@@ -26,8 +26,8 @@ const config = {
       identity: process.env.OSX_SIGN_IDENTITY,
       'hardened-runtime': true,
       'gatekeeper-assess': false,
-      'entitlements': 'src/entitlements.plist',
-      'entitlements-inherit': 'src/entitlements.plist',
+      'entitlements': 'static/entitlements.plist',
+      'entitlements-inherit': 'static/entitlements.plist',
       'signature-flags': 'library'
     },
     osxNotarize: {

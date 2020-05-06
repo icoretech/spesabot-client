@@ -59,7 +59,8 @@ script:
 # - npm run test:ci
 # - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm run test:coverage; fi
 # - if test -z "$TRAVIS_TAG"; then npm run make; fi
-- travis_wait 30 npm run make
+# - travis_wait 30 npm run make
+- travis_wait 30 npm run publish
 
 # after_success: if test -n "$TRAVIS_TAG"; then npm run publish; fi
-after_success: npm run publish
+# after_success: npm run publish

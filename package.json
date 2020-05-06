@@ -13,6 +13,7 @@
     "make": "electron-forge make",
     "makewin32": "electron-forge make --platform=win32",
     "publish": "electron-forge publish",
+    "publish:dry": "electron-forge publish",
     "lint": "echo \"No linting configured\""
   },
   "keywords": [],

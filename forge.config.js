@@ -1,4 +1,16 @@
-module.exports = {
+/* tslint:disable */
+
+const path = require('path')
+const fs = require('fs')
+const packageJson = require('./package.json')
+
+const { version } = packageJson
+const iconDir = path.resolve(__dirname, 'assets', 'icons')
+
+const config = {
+  // hooks: {
+  //   generateAssets: require('./tools/generateAssets')
+  // },
   packagerConfig: {
     name: 'SpesaBot',
     executableName: 'spesabot',

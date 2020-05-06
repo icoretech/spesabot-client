@@ -24,7 +24,7 @@ const config = {
     },
     osxSign: {
       identity: process.env.OSX_SIGN_IDENTITY,
-      'hardened-runtime': true,
+      'hardenedRuntime': true,
       'gatekeeper-assess': false,
       'entitlements': 'static/entitlements.plist',
       'entitlements-inherit': 'static/entitlements.plist',

@@ -87,3 +87,6 @@ typings/
 
 # Electron-Forge
 out/
+
+cert.p12
+envValue.txt

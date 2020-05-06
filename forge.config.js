@@ -15,17 +15,16 @@ const config = {
     name: 'SpesaBot',
     executableName: 'spesabot',
     asar: true,
+    // icon: path.resolve(__dirname, 'assets', 'icons', 'spesabot'),
     appBundleId: process.env.APPLE_BUNDLE_ID,
     appCategoryType: 'public.app-category.developer-tools',
-    darwinDarkModeSupport: true,
-
     win32metadata: {
       CompanyName: 'SpesaBot',
       OriginalFilename: 'SpesaBot',
     },
     osxSign: {
       identity: process.env.OSX_SIGN_IDENTITY,
-      hardenedRuntime: true,
+      'hardened-runtime': true,
       'gatekeeper-assess': false,
       'entitlements': 'src/entitlements.plist',
       'entitlements-inherit': 'src/entitlements.plist',

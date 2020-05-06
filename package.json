@@ -1,6 +1,6 @@
 {
-  "name": "spesabot-desktop",
-  "productName": "spesabot-desktop",
+  "name": "spesabot",
+  "productName": "spesabot",
   "version": "1.0.0",
   "description": "SpesaBot",
   "config": {

@@ -10,10 +10,9 @@
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
-    "make": "electron-forge make",
+    "make": "electron-forge publish --dry-run",
     "makewin32": "electron-forge make --platform=win32",
-    "publish": "electron-forge publish",
-    "publish:dry": "electron-forge publish",
+    "publish": "electron-forge publish --from-dry-run",
     "lint": "echo \"No linting configured\""
   },
   "keywords": [],

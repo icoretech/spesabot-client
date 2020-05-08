@@ -41,9 +41,9 @@ const config = {
     name: '@electron-forge/publisher-nucleus',
     config: {
       host: 'https://nucleus.icorete.ch',
-      appId: 1,
-      channelId: 'production',
-      token: 'boh'
+      appId: '1',
+      channelId: '5bc3702a82f36211a0bd4d5e431f74ca',
+      token: process.env.NUCLEUS_TOKEN
     }
   }],
   makers: [{

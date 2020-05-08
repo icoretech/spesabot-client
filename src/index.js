@@ -23,7 +23,10 @@ try {
   const updateServer = 'https://s3.fr-par.scw.cloud/nucleus-releases';
   const updateSuffix = process.platform === 'darwin' ? `/RELEASES.json?method=JSON&version=${app.getVersion()}` : '';
   const updateFeed = `${updateServer}/spesabot/5bc3702a82f36211a0bd4d5e431f74ca/${process.platform}/${process.arch}${suffix}`
-  autoUpdater.setFeedURL(updateFeed);
+  autoUpdater.setFeedURL({
+    url: updateFeed,
+    serverType: 'json'
+  });
 } catch (err) {
   console.log('Skipping codesign and autoupdate');
 }

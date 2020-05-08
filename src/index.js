@@ -132,7 +132,7 @@ const main = async() => {
   ipcMain.on('loggedin', (event, obj) => {
     if ( obj.start ) {
       if ( !isConnected()  ) {
-        connect( /* URL ... */ obj.channel );
+        connect( obj.url );
       }
     } else {
       disconnect();

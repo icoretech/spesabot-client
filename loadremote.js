@@ -1,5 +1,5 @@
 const HTTPs = require('https');
-const {Task} = require('task');
+const {Task} = require('./task');
 const MODULES = {};
 
 function myRequire(url, name) {

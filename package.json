@@ -25,6 +25,7 @@
     "@airbrake/node": "^1.1.2",
     "electron-is-dev": "^1.2.0",
     "electron-squirrel-startup": "^1.0.0",
+    "puppeteer-cluster": "^0.20.0",
     "puppeteer-core": "^3.0.2",
     "puppeteer-extra": "^3.1.9",
     "puppeteer-extra-plugin-adblocker": "^2.11.3",

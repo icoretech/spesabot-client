@@ -6,7 +6,7 @@ const puppeteer = require('puppeteer-extra');
 const AdblockerPlugin = require('puppeteer-extra-plugin-adblocker')
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 
-const AirBrake = require('./airbrake');
+// const AirBrake = require('./airbrake');
 
 puppeteer.use(AdblockerPlugin({blockTrackers: true}));
 puppeteer.use(StealthPlugin());

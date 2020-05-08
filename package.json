@@ -1,7 +1,7 @@
 {
   "name": "spesabot",
   "productName": "spesabot",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "SpesaBot",
   "config": {
     "forge": "./forge.config.js"
@@ -13,7 +13,9 @@
     "make": "electron-forge publish --dry-run",
     "makewin32": "electron-forge make --platform=win32",
     "publish": "electron-forge publish --from-dry-run",
-    "lint": "echo \"No linting configured\""
+    "lint": "echo \"No linting configured\"",
+    "deploy-minor": "npm version minor --force -m \"version %s\"",
+    "postversion": "git push && git push --tags"
   },
   "keywords": [],
   "author": {

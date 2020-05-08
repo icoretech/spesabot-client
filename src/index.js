@@ -45,7 +45,10 @@ const createWindow = () => {
     width: 1400,
     height: 960,
     resizable: false,
-    fullscreenable: false
+    fullscreenable: false,
+    webPreferences: {
+      nodeIntegration: true
+    }
   });
 
   // and load the index.html of the app.
@@ -128,14 +131,19 @@ function callNotification() {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
 const main = async () => {
-  console.log('********** IN MAIN');
+
   ipcMain.on('loggedin', (event, obj) => {
-    console.log('********** IN LOGGEDIN', event, obj);
+    console.log('********** IN LOGGEDIN', obj);
     if ( obj.start ) {
+      console.log('******', 'should connect');
       if ( !isConnected()  ) {
+        console.log('******', 'CONNECTING!');
         connect( obj.url );
+      } else {
+        console.log('******', 'already connected!');
       }
     } else {
+      console.log('******', 'DISCONNECTING');
       disconnect();
     }
 
@@ -145,14 +153,12 @@ const main = async () => {
   await pie.initialize(app);
   const browser = await pie.connect(app, puppeteer);
 
-  const window = new BrowserWindow({webPreferences: {
-      nodeIntegration: true
-    }});
+  // const window = new BrowserWindow();
   // const url = "https://echo.icorete.ch";
   // await window.loadURL(url);
 
   // const page = await pie.getPage(browser, window);
   // console.log(page.url());
-  window.destroy();
+  // window.destroy();
 };
 main();

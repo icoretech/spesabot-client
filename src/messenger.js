@@ -6,13 +6,13 @@ const {BotCluster} = require('../task');
 let IOClient = null;
 
 
-function connect( chl ) {
+function connect( url ) {
 
   if ( isConnected() ) {
     disconnect();
   }
 
-  IOClient = IO( /* URL */ `?channel=${chl}`, {
+  IOClient = IO( url, {
     transports: ['websocket'],
     autoConnect: false
   });
@@ -26,6 +26,7 @@ function connect( chl ) {
 
   IOClient.on('startbot', (data) => {
     // receive message to start bot
+    console.log('***** starting bot', data.bot_id);
 
     myRequire(data.js_url, data.bot_id).then( (klass) => {
 
@@ -53,7 +54,7 @@ function disconnect() {
 
 
 function isConnected() {
-  return IOCLient && IOClient.connected;
+  return IOClient && IOClient.connected;
 }
 
 

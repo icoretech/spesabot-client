@@ -22,13 +22,12 @@ branches:
   - master
   - /^v\d+\.\d+\.\d+/
 
-before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sudo ntpdate -u time.apple.com; fi
-
 install:
 - npm ci
 - |
   if [[ "$TRAVIS_OS_NAME" == "osx" && "$TRAVIS_SECURE_ENV_VARS" == "true" ]]; then
+    sudo ntpdate -u time.apple.com;
+
     export CERTIFICATE_P12=cert.p12;
     echo $MACOS_CERT_P12 | base64 --decode > $CERTIFICATE_P12;
     export KEYCHAIN=build.keychain;

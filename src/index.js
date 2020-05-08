@@ -14,15 +14,15 @@ const isDev = require('electron-is-dev');
 const {connect, disconnect, isConnected} = require('./messenger');
 
 // https://www.electronjs.org/docs/tutorial/updates
-const updateServer = 'https://nucleus.icorete.ch';
-const updateFeed = `${updateServer}/update/${process.platform}/${app.getVersion()}`;
-
 // On OSX the production build must be code signed. We skip this in dev.
 // Error: Could not get code signature for running application
 // https://www.electronjs.org/docs/tutorial/code-signing#electron-forge
 // https://github.com/electron/electron/issues/7476#issuecomment-433208104
 // https://github.com/electron/electron/issues/7476#issuecomment-454944343
 try {
+  const updateServer = 'https://s3.fr-par.scw.cloud/nucleus-releases';
+  const updateSuffix = process.platform === 'darwin' ? `/RELEASES.json?method=JSON&version=${app.getVersion()}` : '';
+  const updateFeed = `${updateServer}/spesabot/5bc3702a82f36211a0bd4d5e431f74ca/${process.platform}/${process.arch}${suffix}`
   autoUpdater.setFeedURL(updateFeed);
 } catch (err) {
   console.log('Skipping codesign and autoupdate');

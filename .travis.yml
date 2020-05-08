@@ -22,6 +22,9 @@ branches:
   - master
   - /^v\d+\.\d+\.\d+/
 
+before_install:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ntpdate -u time.apple.com; fi
+
 install:
 - npm ci
 - |

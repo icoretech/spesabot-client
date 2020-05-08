@@ -18,7 +18,7 @@ const {
 const proxyUrl = process.env.PROXY_URL;
 
 const puppeteerArgs = {
-  executablePath: '/usr/bin/chromium-browser',
+  // executablePath: '/usr/bin/chromium-browser',
   ignoreHTTPSErrors: true,
   headless: true,
   args: [`--proxy-server=${proxyUrl}`, '--disable-dev-shm-usage', '--no-sandbox', '--disable-setuid-sandbox', '--disable-accelerated-2d-canvas', '--no-first-run', '--no-zygote', '--disable-gpu']

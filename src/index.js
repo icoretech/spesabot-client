@@ -127,9 +127,10 @@ function callNotification() {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
-const main = async() => {
-
+const main = async () => {
+  console.log('********** IN MAIN');
   ipcMain.on('loggedin', (event, obj) => {
+    console.log('********** IN LOGGEDIN', event, obj);
     if ( obj.start ) {
       if ( !isConnected()  ) {
         connect( obj.url );
@@ -144,7 +145,9 @@ const main = async() => {
   await pie.initialize(app);
   const browser = await pie.connect(app, puppeteer);
 
-  const window = new BrowserWindow();
+  const window = new BrowserWindow({webPreferences: {
+      nodeIntegration: true
+    }});
   // const url = "https://echo.icorete.ch";
   // await window.loadURL(url);
 

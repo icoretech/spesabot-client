@@ -2,6 +2,9 @@ const startingPage = "https://www.esselunga.it/area-utenti/applicationCheck?appN
 const userAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36';
 const EventEmitter = require('events').EventEmitter;
 
+const Request = require('request');
+const FS = require('fs');
+
 const puppeteer = require('puppeteer-extra');
 const AdblockerPlugin = require('puppeteer-extra-plugin-adblocker')
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
@@ -83,7 +86,20 @@ class Task {
     // TODO: notify external listener
   }
 
-  emit() {
+  emit(eventName, user, filePath, url) {
+    const formData = {
+      screenshot: FS.createReadStream(filePath)
+    };
+    Request.post({
+        url: url,
+        formData: formData
+    }, function optionalCallback(err, httpResponse, body) {
+        if (err) {
+            return console.error('upload failed:', err);
+        }
+        console.log('Upload successful!  Server responded with:', body);
+    });
+
     let args = Array.prototype.slice(arguments, 0);
     this.botcluster.emit.apply(this.botcluster, args);
   }

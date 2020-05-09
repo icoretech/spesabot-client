@@ -1,7 +1,7 @@
 {
   "name": "spesabot",
   "productName": "spesabot",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "SpesaBot",
   "config": {
     "forge": "./forge.config.js"

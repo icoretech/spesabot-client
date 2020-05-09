@@ -14,7 +14,7 @@
     "makewin32": "electron-forge make --platform=win32",
     "publish": "electron-forge publish --from-dry-run",
     "lint": "echo \"No linting configured\"",
-    "deploy-minor": "npm version minor --force -m \"version %s\"",
+    "deploy-minor": "npm version patch --force -m \"version %s\"",
     "postversion": "git push && git push --tags"
   },
   "keywords": [],

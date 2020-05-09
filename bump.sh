@@ -1,2 +1,2 @@
 #!/bin/bash
-npm run deploy-minor
+npm run deploy-patch

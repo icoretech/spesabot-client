@@ -59,17 +59,19 @@ const createWindow = () => {
   // mainWindow.loadURL('https://keenthemes.com/metronic/preview/demo8/custom/apps/projects/list-datatable.html')
   // mainWindow.loadURL('https://keenthemes.com/metronic/preview/demo4/custom/apps/projects/list-datatable.html');
   // mainWindow.loadFile('/Users/kain/Downloads/metronic_v6.1.8/theme/default/demo12/dist/custom/apps/contacts/list-datatable.html');
-  mainWindow.loadURL(process.env.SPESABOT_URL || 'https://app-dev.spesabot.com', {
-      userAgent: 'spesabot'
-    })
-    // file:///Users/kain/Downloads/metronic_v6.1.8/theme/default/demo12/dist/custom/apps/projects/edit-project.html
+  // mainWindow.loadURL(process.env.SPESABOT_URL || 'https://app-dev.spesabot.com', {
+  //     userAgent: 'spesabot'
+  //   })
+  // file:///Users/kain/Downloads/metronic_v6.1.8/theme/default/demo12/dist/custom/apps/projects/edit-project.html
     // mainWindow.loadFile('/Users/kain/Downloads/metronic_v6.1.8/theme/default/demo12/dist/custom/apps/projects/edit-project.html');
 
-  // mainWindow.loadURL(
-  //   isDev ?
-  //   "http://localhost:3000" :
-  //   `file://${path.join(__dirname, "../build/index.html")}`
-  // );
+  mainWindow.loadURL(
+    isDev ?
+    'https://app-dev.spesabot.com' :
+    'https://www.spesabot.com', {
+      userAgent: 'spesabot'
+    }
+  );
 
   // Open the DevTools.
   if (isDev) {

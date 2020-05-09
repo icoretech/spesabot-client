@@ -8,6 +8,7 @@ const FS = require('fs');
 const puppeteer = require('puppeteer-extra');
 const AdblockerPlugin = require('puppeteer-extra-plugin-adblocker')
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
+const chromium = require('chromium');
 
 // const AirBrake = require('./airbrake');
 
@@ -20,8 +21,13 @@ const {
 
 const proxyUrl = process.env.PROXY_URL;
 
+// chronium.path may or may provide a path in an asar archive.  If it does
+// it is unusable, and we'll attempt to swap it out for the unarchived version
+const chromiumPath = chromium.path.replace('app.asar', 'app.asar.unpacked');
+
 const puppeteerArgs = {
   // executablePath: '/usr/bin/chromium-browser',
+  executablePath: chromiumPath,
   ignoreHTTPSErrors: true,
   headless: true,
   args: [`--proxy-server=${proxyUrl}`, '--disable-dev-shm-usage', '--no-sandbox', '--disable-setuid-sandbox', '--disable-accelerated-2d-canvas', '--no-first-run', '--no-zygote', '--disable-gpu']

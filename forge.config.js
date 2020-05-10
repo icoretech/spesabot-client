@@ -81,6 +81,13 @@ const config = {
     name: '@electron-forge/maker-zip',
     platforms: ['darwin']
   }, {
+    name: '@electron-forge/maker-dmg',
+    platforms: ['darwin'],
+    config: {
+      // background: './assets/dmg-background.png',
+      format: 'ULFO'
+    }
+  }, {
     name: '@electron-forge/maker-deb',
     platforms: ['linux'],
     config: {}

@@ -73,6 +73,11 @@ const createWindow = () => {
     }
   );
 
+  mainWindow.webContents.on('new-window', function(e, url) {
+    e.preventDefault();
+    require('electron').shell.openExternal(url);
+  });
+
   // Open the DevTools.
   if (isDev) {
     mainWindow.webContents.openDevTools({

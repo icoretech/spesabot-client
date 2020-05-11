@@ -43,14 +43,14 @@ function connect( url ) {
     console.log('!! socket connected !!');
   })
   IOClient.on('connect_error', (err) => {
-    console.error('!! socket connection error !!', err);
+    console.error('!! socket connection error !!', `${err}`);
   })
   IOClient.on('connect_timeout', (timeout) => {
     console.error('!! connect timeout !!', timeout);
   })
 
   IOClient.on('error', (err) => {
-    console.error('!! error !!', err);
+    console.error('!! error !!', `${err}`);
   })
 
   IOClient.on('disconnect', () => {
@@ -66,7 +66,7 @@ function connect( url ) {
   })
 
   IOClient.on('reconnect_error', (err) => {
-    console.error('!! reconnect_error !!', err);
+    console.error('!! reconnect_error !!', `${err}`);
   })
 
   IOClient.on('reconnect_failed', () => {

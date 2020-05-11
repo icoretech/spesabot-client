@@ -1,6 +1,7 @@
 const HTTPs = require('https');
 const {Task} = require('./task');
 const MODULES = {};
+const VM = require('vm');
 
 function myRequire(url, name) {
 

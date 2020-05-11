@@ -143,11 +143,11 @@ function callNotification() {
 const main = async () => {
 
   ipcMain.on('loggedin', (event, obj) => {
-    console.log('********** IN LOGGEDIN', obj);
+    console.log('********** IN LOGGEDIN', obj.start);
     if ( obj.start ) {
       console.log('******', 'should connect');
       if ( !isConnected()  ) {
-        console.log('******', 'CONNECTING!');
+        console.log('******', 'CONNECTING!', obj.url);
         connect( obj.url );
       } else {
         console.log('******', 'already connected!');

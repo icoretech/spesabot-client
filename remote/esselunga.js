@@ -7,7 +7,7 @@ class Esselunga extends Task {
   }
 
 
-  execute({page, data: userdata}) {
+  async execute({page, data: userdata}) {
     let user = JSON.parse(userdata);
     // data.find(_item => _item.email === email);
     let email = user.email;

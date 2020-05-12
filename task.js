@@ -1,5 +1,3 @@
-const startingPage = "https://www.esselunga.it/area-utenti/applicationCheck?appName=esselungaEcommerce&daru=https%3A%2F%2Fwww.esselungaacasa.it%3A443%2Fecommerce%2Fnav%2Fauth%2Fsupermercato%2Fhome.html%3F&loginType=light";
-const userAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36';
 const EventEmitter = require('events').EventEmitter;
 
 const Request = require('request');
@@ -30,7 +28,8 @@ const puppeteerArgs = {
   executablePath: chromiumPath,
   ignoreHTTPSErrors: true,
   headless: true,
-  args: [`--proxy-server=${proxyUrl}`, '--disable-dev-shm-usage', '--no-sandbox', '--disable-setuid-sandbox', '--disable-accelerated-2d-canvas', '--no-first-run', '--no-zygote', '--disable-gpu']
+  // args: [`--proxy-server=${proxyUrl}`, '--disable-dev-shm-usage', '--no-sandbox', '--disable-setuid-sandbox', '--disable-accelerated-2d-canvas', '--no-first-run', '--no-zygote', '--disable-gpu']
+  args: ['--disable-dev-shm-usage', '--no-sandbox', '--disable-setuid-sandbox', '--disable-accelerated-2d-canvas', '--no-first-run', '--no-zygote', '--disable-gpu']
 };
 
 class BotClusterClass extends EventEmitter {

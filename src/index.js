@@ -49,6 +49,7 @@ const createWindow = () => {
     height: 960,
     resizable: false,
     fullscreenable: false,
+    backgroundColor: '#EEF0F8',
     webPreferences: {
       nodeIntegration: true
     }

@@ -50,6 +50,7 @@ const createWindow = () => {
     resizable: false,
     fullscreenable: false,
     backgroundColor: '#EEF0F8',
+    show: false,
     webPreferences: {
       nodeIntegration: true
     }
@@ -65,6 +66,10 @@ const createWindow = () => {
   //   })
   // file:///Users/kain/Downloads/metronic_v6.1.8/theme/default/demo12/dist/custom/apps/projects/edit-project.html
     // mainWindow.loadFile('/Users/kain/Downloads/metronic_v6.1.8/theme/default/demo12/dist/custom/apps/projects/edit-project.html');
+
+  mainWindow.once('ready-to-show', () => {
+    mainWindow.show();
+  });
 
   mainWindow.loadURL(
     isDev ?

@@ -74,9 +74,7 @@ const createWindow = () => {
   mainWindow.loadURL(
     isDev ?
     'https://app-dev.spesabot.com/users/sign_in' :
-    'https://www.spesabot.com/users/sign_in', {
-      userAgent: 'spesabot'
-    }
+    'https://www.spesabot.com/users/sign_in'
   );
 
   mainWindow.webContents.on('new-window', function(e, url) {

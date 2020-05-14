@@ -7,8 +7,6 @@ const {
   ipcMain
 } = require('electron');
 const path = require('path');
-const pie = require('puppeteer-in-electron')
-const puppeteer = require('puppeteer-core');
 const isDev = require('electron-is-dev');
 
 const {connect, disconnect, isConnected} = require('./messenger');
@@ -165,8 +163,8 @@ const main = async () => {
     event.returnValue = 'ok';
   });
 
-  await pie.initialize(app);
-  const browser = await pie.connect(app, puppeteer);
+  // await pie.initialize(app);
+  // const browser = await pie.connect(app, puppeteer);
 
   // const window = new BrowserWindow();
   // const url = "https://echo.icorete.ch";

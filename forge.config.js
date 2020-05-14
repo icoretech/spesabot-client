@@ -16,7 +16,8 @@ const config = {
   packagerConfig: {
     name: 'SpesaBot',
     executableName: 'spesabot',
-    asar: false,
+    asar: true,
+    asarUnpack: "node_modules/puppeteer/.local-chromium/**/*",
     // icon: path.resolve(__dirname, 'assets', 'icons', 'spesabot'),
     appBundleId: process.env.APPLE_BUNDLE_ID,
     appCategoryType: 'public.app-category.developer-tools',

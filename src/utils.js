@@ -1,7 +1,7 @@
 const Path = require('path');
 const FS = require('fs');
 const ElectronLog = require('node-log-rotate');
-const Package = require('./package.json');
+const Package = require('../package.json');
 
 
 ElectronLog.setup({

@@ -1,7 +1,7 @@
 const IO = require('socket.io-client');
-const {myRequire} = require('../loadremote');
-const {BotCluster} = require('../task');
-
+const {myRequire} = require('./loadremote');
+const {BotCluster} = require('./task');
+const {Log} = require('./utils');
 
 let IOClient = null;
 
@@ -21,13 +21,13 @@ function connect( url ) {
 
   IOClient.on('reconnect_attempt', () => {
     // TODO: log something
-    console.warn('*** reconnecting');
+    Log.log('*** reconnecting');
   });
 
 
   IOClient.on('startbot', (data) => {
     // receive message to start bot
-    console.log('***** starting bot', data.bot_id);
+    Log.log('*** starting bot', data.bot_id);
 
     myRequire(data.js_url, data.bot_id).then( (klass) => {
 
@@ -40,37 +40,37 @@ function connect( url ) {
   });
 
   IOClient.on('connect', () => {
-    console.log('!! socket connected !!');
+    Log.log('!! socket connected !!');
   })
   IOClient.on('connect_error', (err) => {
-    console.error('!! socket connection error !!', `${err}`);
+    Log.log('!! socket connection error !!', `${err}`);
   })
   IOClient.on('connect_timeout', (timeout) => {
-    console.error('!! connect timeout !!', timeout);
+    Log.log('!! connect timeout !!', timeout);
   })
 
   IOClient.on('error', (err) => {
-    console.error('!! error !!', `${err}`);
+    Log.log('!! error !!', `${err}`);
   })
 
   IOClient.on('disconnect', () => {
-    console.warn('!! disconnect !!');
+    Log.log('!! disconnect !!');
   })
 
   IOClient.on('reconnect', () => {
-    console.log('!! reconnect !!');
+    Log.log('!! reconnect !!');
   })
 
   IOClient.on('reconnecting', () => {
-    console.log('!! reconnecting !!');
+    Log.log('!! reconnecting !!');
   })
 
   IOClient.on('reconnect_error', (err) => {
-    console.error('!! reconnect_error !!', `${err}`);
+    Log.log('!! reconnect_error !!', `${err}`);
   })
 
   IOClient.on('reconnect_failed', () => {
-    console.warn('!! reconnect_failed !!');
+    Log.log('!! reconnect_failed !!');
   })
 
   // IOClient.on('ping', () => {

@@ -8,7 +8,7 @@ const {
 } = require('electron');
 const path = require('path');
 const isDev = require('electron-is-dev');
-const {Log, Name, TempFolder} = require('../utils');
+const {Log, Name, TempFolder} = require('./utils');
 
 Log.log('Starting up');
 Log.log(`folder is: ${TempFolder}` );

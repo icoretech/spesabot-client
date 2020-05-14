@@ -16,7 +16,7 @@ const config = {
   packagerConfig: {
     name: 'SpesaBot',
     executableName: 'spesabot',
-    asar: true,
+    asar: false,
     // icon: path.resolve(__dirname, 'assets', 'icons', 'spesabot'),
     appBundleId: process.env.APPLE_BUNDLE_ID,
     appCategoryType: 'public.app-category.developer-tools',

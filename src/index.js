@@ -20,7 +20,7 @@ const {connect, disconnect, isConnected} = require('./messenger');
 // https://github.com/electron/electron/issues/7476#issuecomment-433208104
 // https://github.com/electron/electron/issues/7476#issuecomment-454944343
 try {
-  const updateServer = 'https://s3.fr-par.scw.cloud/nucleus-releases';
+  const updateServer = 'https://nucleus.icorete.ch';
   const updateSuffix = process.platform === 'darwin' ? `/RELEASES.json?method=JSON&version=${app.getVersion()}` : '';
   const updateFeed = `${updateServer}/spesabot/5bc3702a82f36211a0bd4d5e431f74ca/${process.platform}/${process.arch}${suffix}`
   autoUpdater.setFeedURL({

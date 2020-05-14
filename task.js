@@ -29,7 +29,7 @@ function getChromiumExecPath() {
 
 const puppeteerArgs = {
   // executablePath: '/usr/bin/chromium-browser',
-  executablePath: chromiumPath,
+  executablePath: getChromiumExecPath(),
   ignoreHTTPSErrors: true,
   headless: true,
   // args: [`--proxy-server=${proxyUrl}`, '--disable-dev-shm-usage', '--no-sandbox', '--disable-setuid-sandbox', '--disable-accelerated-2d-canvas', '--no-first-run', '--no-zygote', '--disable-gpu']
@@ -56,7 +56,7 @@ class BotClusterClass extends EventEmitter {
     Cluster.launch({
       concurrency: Cluster.CONCURRENCY_CONTEXT,
       maxConcurrency: process.env.CONCURRENCY || 2,
-      puppeteer: getChromiumExecPath(),
+      puppeteer: puppeteer,
       puppeteerOptions: puppeteerArgs,
       monitor: false,
       timeout: 130000

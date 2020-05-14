@@ -16,12 +16,13 @@ const config = {
   packagerConfig: {
     name: 'SpesaBot',
     executableName: 'spesabot',
-    asar: {
-      unpack: "node_modules/puppeteer/.local-chromium/**/*"
-    },
+    // asar: {
+    //   unpack: "node_modules/puppeteer/.local-chromium/**/*"
+    // },
+    asar: false,
     // icon: path.resolve(__dirname, 'assets', 'icons', 'spesabot'),
     appBundleId: process.env.APPLE_BUNDLE_ID,
-    appCategoryType: 'public.app-category.developer-tools',
+    appCategoryType: 'public.app-category.utilities',
     win32metadata: {
       CompanyName: 'SpesaBot',
       OriginalFilename: 'SpesaBot',
@@ -81,7 +82,7 @@ const config = {
     }
   }, {
     name: '@electron-forge/maker-zip',
-    platforms: ['darwin']
+    platforms: ['darwin', 'win32']
   }, {
     name: '@electron-forge/maker-dmg',
     platforms: ['darwin'],

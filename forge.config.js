@@ -41,9 +41,9 @@ const config = {
       ascProvider: process.env.APPLE_ASC_PROVIDER
     }
   },
-  plugins: [
-    ['@electron-forge/plugin-auto-unpack-natives']
-  ],
+  // plugins: [
+  //   ['@electron-forge/plugin-auto-unpack-natives']
+  // ],
   publishers: [{
     name: '@electron-forge/publisher-nucleus',
     config: {

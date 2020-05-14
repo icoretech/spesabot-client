@@ -35,6 +35,17 @@ const config = {
       'entitlements-inherit': 'static/entitlements.plist',
       'signature-flags': 'library'
     },
+    ignore: [
+      /\/assets(\/?)/,
+      /\/tools(\/?)/,
+      /\/remote(\/?)/,
+      /package-lock\.json/,
+      /Readme\.md/,
+      /bump\.sh/,
+      /.travis\.yml/,
+      /cert.p12/,
+      /appveyor\.yml/
+    ],
     osxNotarize: {
       appBundleId: process.env.APPLE_BUNDLE_ID,
       appleId: process.env.APPLE_ID,

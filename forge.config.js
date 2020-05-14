@@ -20,7 +20,7 @@ const config = {
     //   unpack: "node_modules/puppeteer/.local-chromium/**/*"
     // },
     asar: false,
-    // icon: path.resolve(__dirname, 'assets', 'icons', 'spesabot'),
+    icon: path.resolve(__dirname, 'assets', 'icons', 'spesabot'),
     appBundleId: process.env.APPLE_BUNDLE_ID,
     appCategoryType: 'public.app-category.utilities',
     win32metadata: {
@@ -86,7 +86,7 @@ const config = {
         noMsi: true,
         remoteReleases: '',
         setupExe: `spesabot-${version}-${arch}-setup.exe`,
-        // setupIcon: path.resolve(iconDir, 'fiddle.ico'),
+        setupIcon: path.resolve(iconDir, 'spesabot.ico'),
         certificatePassword: process.env.WINDOWS_CERTIFICATE_PASSWORD,
         certificateFile
       }

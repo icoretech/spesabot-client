@@ -28,6 +28,7 @@ try {
     serverType: 'json'
   });
 } catch (err) {
+  console.log(err);
   console.log('Skipping codesign and autoupdate');
 }
 

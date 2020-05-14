@@ -25,6 +25,10 @@ try {
     url: updateFeed,
     serverType: 'json'
   });
+  setInterval(() => {
+    autoUpdater.checkForUpdates()
+  }, 3600000);
+
 } catch (err) {
   console.log(err);
   console.log('Skipping codesign and autoupdate');
@@ -40,6 +44,7 @@ if (isDev) {
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
   app.quit();
 }
+
 
 const createWindow = () => {
   // Create the browser window.

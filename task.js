@@ -1,7 +1,8 @@
 const EventEmitter = require('events').EventEmitter;
-
+const {Log, TempFolder} = require('./utils');
 const Request = require('request');
 const FS = require('fs');
+const Path = require('path');
 
 const puppeteer = require('puppeteer-extra');
 const AdblockerPlugin = require('puppeteer-extra-plugin-adblocker')
@@ -85,6 +86,24 @@ class Task {
   constructor(config){
     this.config = config;
     this.botcluster = BotCluster;
+    Log.log(`new task has been loaded`);
+  }
+
+  Name() {
+    return this.constructor.name;
+  }
+
+
+  Log(text) {
+    Log.log(`[${Name}] - ${text}`);
+  }
+
+  get Dir() {
+    return TempFolder;
+  }
+
+  computePath(path) {
+    return Path.join( this.Dir, path);
   }
 
   execute() {
@@ -96,6 +115,7 @@ class Task {
   }
 
   emit(eventName, user, filePath, url) {
+    this.Log(`full screenshot path is ${filePath}`);
     const formData = {
       screenshot: FS.createReadStream(filePath)
     };

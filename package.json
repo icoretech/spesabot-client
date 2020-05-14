@@ -25,6 +25,7 @@
   },
   "license": "Meh",
   "dependencies": {
+    "node-log-rotate": "0.1.5",
     "@airbrake/node": "^1.1.2",
     "electron-is-dev": "^1.2.0",
     "electron-squirrel-startup": "^1.0.0",

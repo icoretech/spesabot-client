@@ -8,6 +8,10 @@ const {
 } = require('electron');
 const path = require('path');
 const isDev = require('electron-is-dev');
+const {Log, Name, TempFolder} = require('../utils');
+
+Log.log('Starting up');
+Log.log(`folder is: ${TempFolder}` );
 
 const {connect, disconnect, isConnected} = require('./messenger');
 
@@ -30,14 +34,17 @@ try {
   }, 60000);
 
 } catch (err) {
-  console.log(err);
-  console.log('Skipping codesign and autoupdate');
+  Log.log(err);
+  Log.log('Skipping codesign and autoupdate');
+  console.error(err);
 }
 
 if (isDev) {
   console.log('Running in development');
+  Log.log('Running in development')
 } else {
   console.log('Running in production');
+  Log.log('-- production --');
 }
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -131,8 +138,8 @@ autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
 })
 
 autoUpdater.on('error', message => {
-  console.error('There was a problem updating the application');
-  console.error(message);
+  console.error('There was a problem updating the application:', message);
+  Log.log(`There was a problem updating the application: ${message}`);
 })
 
 // alternative: https://github.com/mikaelbr/node-notifier
@@ -151,17 +158,15 @@ function callNotification() {
 const main = async () => {
 
   ipcMain.on('loggedin', (event, obj) => {
-    console.log('********** IN LOGGEDIN', obj.start);
     if ( obj.start ) {
-      console.log('******', 'should connect');
+      // Log.log(`new page navigated`);
       if ( !isConnected()  ) {
-        console.log('******', 'CONNECTING!', obj.url);
+        Log.log(`connecting socket`);
         connect( obj.url );
       } else {
-        console.log('******', 'already connected!');
       }
     } else {
-      console.log('******', 'DISCONNECTING');
+      Log.log(`disconnecting socket`);
       disconnect();
     }
 

@@ -13,9 +13,10 @@ class Esselunga extends Task {
     let email = user.email;
     let password = user.password;
     let botId = user.botId;
-    const screenshotPath = `screenshots/${Date.now()}.png`
+    let screenshotFile = `screenshots/${Date.now()}.png`;
+    const screenshotPath = this.computePath( screenshotFile );
 
-    console.log(`starting job for ${email} / ${password} / ${botId}`);
+    this.Log(`starting job for ${email} / ${password} / ${botId}`);
 
     // const navigationPromise = page.waitForNavigation({ waitUntil: ['domcontentloaded'] });
 
@@ -35,14 +36,14 @@ class Esselunga extends Task {
     ]);
     // await page.$eval('#loginForm', form => form.submit());
     // await navigationPromise;
-    console.log(`${email} signed in`);
+    this.Log(`${email} signed in`);
 
     try {
       await page.waitForSelector('li[aria-labelledby="deliveryTabPanelLabel"]', {
         timeout: 15000
       });
     } catch (err) {
-      console.log(`${email} cannot find delivery tab after 15s: ${err}`);
+      this.Log(`${email} cannot find delivery tab after 15s: ${err}`);
       await page.screenshot({
         fullPage: true,
         path: screenshotPath
@@ -52,7 +53,7 @@ class Esselunga extends Task {
     }
 
     try {
-      console.log(`${email} evaluating bad stuff`);
+      this.Log(`${email} evaluating bad stuff`);
       await page.evaluate(() => {
 
         let scrollTop = document.querySelector('#scroll-top');
@@ -71,17 +72,17 @@ class Esselunga extends Task {
         }
       });
     } catch (err) {
-      console.log(`${email} cannot remove bad stuff from page: ${err}`);
+      this.Log(`${email} cannot remove bad stuff from page: ${err}`);
     }
 
 
     try {
       await page.waitFor(6000);
-      console.log(`${email} clicking delivery tab panel`);
+      this.Log(`${email} clicking delivery tab panel`);
       await page.click('li[aria-labelledby="deliveryTabPanelLabel"]');
       await page.waitForSelector('div[aria-labelledby=slotPanelTitle]', { timeout: 15000 });
     } catch (err) {
-      console.log(`${email} there was an error clicking the delivery tab panel ${err}`);
+      this.Log(`${email} there was an error clicking the delivery tab panel ${err}`);
       await page.screenshot({
         fullPage: true,
         path: screenshotPath
@@ -94,7 +95,7 @@ class Esselunga extends Task {
     // await page.waitFor(3000);
 
     await page.waitFor(6000);
-    // console.log(`${email} screenshotting delivery tab panel`);
+    // this.Log(`${email} screenshotting delivery tab panel`);
     const el = await page.$('div[aria-labelledby=slotPanelTitle]');
     // await el.screenshot({ path: 'screenshots/capture.png'});
     // await page.screenshot({
@@ -102,14 +103,14 @@ class Esselunga extends Task {
     //   path: `screenshots/${Date.now()}_deliveryTabPanelLabel.png`
     // });
 
-    console.log(`${email} clicking delivery slots...`);
+    this.Log(`${email} clicking delivery slots...`);
     const deliverySlots = await page.$$('div[aria-labelledby=slotPanelTitle] form table tbody tr td label');
 
     for (let i = 0; i < deliverySlots.length; i++) {
       try {
         await (await deliverySlots[i].click());
       } catch (err) {
-        console.log(`${email} there was an error clicking a slot ${err}`);
+        this.Log(`${email} there was an error clicking a slot ${err}`);
         await page.screenshot({
           fullPage: true,
           path: screenshotPath
@@ -126,7 +127,7 @@ class Esselunga extends Task {
         // await page.waitForSelector('a[data-remodal-action=close]', {
         //   timeout: 100
         // });
-        console.log(`${email} found confirmation`);
+        this.Log(`${email} found confirmation`);
         // await page.screenshot({
         //   fullPage: true,
         //   path: `screenshots/${Date.now()}_remodal_open.png`
@@ -139,12 +140,12 @@ class Esselunga extends Task {
           fullPage: true,
           path: screenshotPath
         });
-        console.log(`${email} signaling success`);
+        this.Log(`${email} signaling success`);
 
         this.emit('success', user, screenshotPath);
         return;
       } catch (err) {
-        console.log(`${email} no delivery slot for index ${i} ${err}`);
+        this.Log(`${email} no delivery slot for index ${i} ${err}`);
       }
     }
     await el.screenshot({ path: screenshotPath });

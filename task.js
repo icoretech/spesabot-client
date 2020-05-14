@@ -22,7 +22,10 @@ const proxyUrl = process.env.PROXY_URL;
 // chronium.path may or may provide a path in an asar archive.  If it does
 // it is unusable, and we'll attempt to swap it out for the unarchived version
 // const chromiumPath = chromium.path.replace('app.asar', 'app.asar.unpacked');
-const chromiumPath = puppeteer.executablePath().replace('app.asar', 'app.asar.unpacked');
+function getChromiumExecPath() {
+  return puppeteer.executablePath().replace('app.asar', 'app.asar.unpacked');
+}
+// const chromiumPath = puppeteer.executablePath().replace('app.asar', 'app.asar.unpacked');
 
 const puppeteerArgs = {
   // executablePath: '/usr/bin/chromium-browser',
@@ -53,7 +56,7 @@ class BotClusterClass extends EventEmitter {
     Cluster.launch({
       concurrency: Cluster.CONCURRENCY_CONTEXT,
       maxConcurrency: process.env.CONCURRENCY || 2,
-      puppeteer: puppeteer,
+      puppeteer: getChromiumExecPath(),
       puppeteerOptions: puppeteerArgs,
       monitor: false,
       timeout: 130000

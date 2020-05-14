@@ -27,7 +27,7 @@ try {
   });
   setInterval(() => {
     autoUpdater.checkForUpdates()
-  }, 3600000);
+  }, 60000);
 
 } catch (err) {
   console.log(err);

@@ -4,8 +4,12 @@ const {
   dialog,
   BrowserWindow,
   Notification,
-  ipcMain
+  ipcMain,
+  Menu
 } = require('electron');
+
+Menu.setApplicationMenu(null);
+
 const path = require('path');
 const isDev = require('electron-is-dev');
 const {Log, Name, TempFolder} = require('./utils');
@@ -77,6 +81,8 @@ const createWindow = () => {
   //   })
   // file:///Users/kain/Downloads/metronic_v6.1.8/theme/default/demo12/dist/custom/apps/projects/edit-project.html
     // mainWindow.loadFile('/Users/kain/Downloads/metronic_v6.1.8/theme/default/demo12/dist/custom/apps/projects/edit-project.html');
+
+  mainWindow.setMenu(null);
 
   mainWindow.once('ready-to-show', () => {
     mainWindow.show();

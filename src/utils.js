@@ -13,19 +13,19 @@ ElectronLog.setup({
 ElectronLog.deleteLog(2);
 
 
-const TEMP_FOLDER = Path.join(process.env.TMPDIR, '.spesabot');
+const TEMP_FOLDER = process.env.TMPDIR; // Path.join(process.env.TMPDIR, '.spesabot');
 console.log('temp folder is', TEMP_FOLDER);
-if ( ! FS.existsSync( TEMP_FOLDER ) ) {
-  console.log(`creating folder ${TEMP_FOLDER}`);
-  ElectronLog.log(`creating folder ${TEMP_FOLDER}`);
-  try {
-    FS.mkdirSync(TEMP_FOLDER, { recursive: true } );
-  } catch( e ) {
-    ElectronLog.log(`error ${e}`);
-    throw e;
-  }
+// if ( ! FS.existsSync( TEMP_FOLDER ) ) {
+//   console.log(`creating folder ${TEMP_FOLDER}`);
+//   ElectronLog.log(`creating folder ${TEMP_FOLDER}`);
+//   try {
+//     FS.mkdirSync(TEMP_FOLDER, { recursive: true } );
+//   } catch( e ) {
+//     ElectronLog.log(`error ${e}`);
+//     throw e;
+//   }
 
-}
+// }
 
 
 module.exports = {

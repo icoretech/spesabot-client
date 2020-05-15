@@ -1,5 +1,3 @@
-
-
 class Esselunga extends Task {
 
   constructor(config) {
@@ -8,28 +6,36 @@ class Esselunga extends Task {
 
 
   async execute({page, data: userdata}) {
-    let user = JSON.parse(userdata);
-    // data.find(_item => _item.email === email);
-    let email = user.email;
-    let password = user.password;
-    let botId = user.botId;
-    let screenshotFile = `screenshots/${Date.now()}.png`;
-    const screenshotPath = this.computePath( screenshotFile );
+    let email = "<%= j(@bot.username) %>";
+    let password = "<%= j(@bot.password) %>";
+    let botId = "<%= j(@bot.uuid) %>";
+
+    let screenshotDir = this.computePath( 'screenshots' );
+    this.createDir( screenshotDir );
+
+    let screenshotPath = this.computePath( screenshotDir,`${Date.now()}.png` );
+
+    let user = {email, password, botId};
 
     this.Log(`starting job for ${email} / ${password} / ${botId}`);
 
     // const navigationPromise = page.waitForNavigation({ waitUntil: ['domcontentloaded'] });
 
+    this.Log('page.setViewport');
     await page.setViewport({ width: 1280, height: 800 })
+
     // await page.setUserAgent(userAgent);
     // const ua = await page.evaluate('navigator.userAgent');
     // await page.setExtraHTTPHeaders({
     //   'Accept-Language': 'en-US,en;q=0.9,it-IT;q=0.8,it;q=0.7'
     // });
 
-    await page.goto(startingPage, { waitUntil: 'domcontentloaded' });
+    this.Log("page.goto: <%= j(@bot.service.starting_page.html_safe) %>");
+    await page.goto("<%= j(@bot.service.starting_page.html_safe) %>", { waitUntil: 'domcontentloaded' });
+    this.Log('page.type');
     await page.type('#gw_username', email);
     await page.type('#gw_password', password);
+    this.Log('awaiting response');
     const [response] = await Promise.all([
       page.waitForNavigation({ waitUntil: 'domcontentloaded' }), // The promise resolves after navigation has finished
       page.$eval('#loginForm', form => form.submit())
@@ -48,7 +54,7 @@ class Esselunga extends Task {
         fullPage: true,
         path: screenshotPath
       });
-      this.emit('failure', user, screenshotPath);
+      this.emit('failure', user, screenshotPath, "<%= failure_api_bot_url(@bot) %>");
       return;
     }
 
@@ -87,11 +93,11 @@ class Esselunga extends Task {
         fullPage: true,
         path: screenshotPath
       });
-      this.emit('failure', user, screenshotPath);
+      this.emit('failure', user, screenshotPath, "<%= failure_api_bot_url(@bot) %>");
       return;
     }
 
-    // console.log(`${email} delivery tab panel clicked, waiting for slotPanelTitle`);
+    // this.Log(`${email} delivery tab panel clicked, waiting for slotPanelTitle`);
     // await page.waitFor(3000);
 
     await page.waitFor(6000);
@@ -115,7 +121,7 @@ class Esselunga extends Task {
           fullPage: true,
           path: screenshotPath
         });
-        this.emit('failure', user, screenshotPath);
+        this.emit('failure', user, screenshotPath, "<%= failure_api_bot_url(@bot) %>");
         return;
       }
 
@@ -142,7 +148,7 @@ class Esselunga extends Task {
         });
         this.Log(`${email} signaling success`);
 
-        this.emit('success', user, screenshotPath);
+        this.emit('success', user, screenshotPath, "<%= success_api_bot_url(@bot) %>");
         return;
       } catch (err) {
         this.Log(`${email} no delivery slot for index ${i} ${err}`);
@@ -153,7 +159,7 @@ class Esselunga extends Task {
     //   fullPage: true,
     //   path: screenshotPath
     // });
-    this.emit('no_slots', user, screenshotPath);
+    this.emit('no_slots', user, screenshotPath, "<%= no_slots_api_bot_url(@bot) %>");
   }
 
 }

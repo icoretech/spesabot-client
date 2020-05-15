@@ -89,21 +89,29 @@ class Task {
     Log.log(`new task has been loaded`);
   }
 
-  Name() {
+  get Name() {
     return this.constructor.name;
   }
 
 
   Log(text) {
-    Log.log(`[${Name}] - ${text}`);
+    Log.log(`[${this.Name}] - ${text}`);
   }
 
   get Dir() {
     return TempFolder;
   }
 
-  computePath(path) {
-    return Path.join( this.Dir, path);
+  computePath(parentPath, path) {
+    return Path.join( parentPath, path);
+  }
+
+  createDir(path) {
+    try {
+      FS.mkdirSync(path, { recursive: true } );
+    } catch( e ) {
+      this.Log(`error ${e}`);
+    }
   }
 
   execute() {
@@ -120,13 +128,20 @@ class Task {
       screenshot: FS.createReadStream(filePath)
     };
     Request.post({
-        url: url,
-        formData: formData
-    }, function optionalCallback(err, httpResponse, body) {
-        if (err) {
-            return console.error('upload failed:', err);
-        }
-        console.log('Upload successful!  Server responded with:', body);
+      url: url,
+      formData: formData
+    }, (err, httpResponse, body) => {
+      this.Log('remove screenshot file');
+      try {
+        FS.unlinkSync(filePath)
+      } catch(e) {
+        this.Log(`error while removing file: ${filePath}`);
+      }
+
+      if (err) {
+        return this.Log(`upload failed: ${err}`);
+      }
+      this.Log(`Upload successful!  Server responded with: ${body}`);
     });
 
     let args = Array.prototype.slice(arguments, 0);

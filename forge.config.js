@@ -122,7 +122,6 @@ const config = {
       options: {
         name: 'spesabot',
         productName: 'SpesaBot',
-        maintainer: 'SpesaBot',
         homepage: 'https://www.spesabot.com',
         categories: ['Utility'],
         icon: path.resolve(iconDir, 'spesabot.png')

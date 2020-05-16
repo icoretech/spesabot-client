@@ -28,7 +28,7 @@ const {connect, disconnect, isConnected} = require('./messenger');
 try {
   const updateServer = 'https://download.spesabot.com';
   const updateSuffix = process.platform === 'darwin' ? `/RELEASES.json?method=JSON&version=${app.getVersion()}` : '';
-  const updateFeed = `${updateServer}/spesabot/0b1fdcf9e30320cf383f8b1e7f488969/${process.platform}/${process.arch}${updateSuffix}`
+  const updateFeed = `${updateServer}/spesabot/b566e902588c0222b74b256b67b0d304/${process.platform}/${process.arch}${updateSuffix}`
   autoUpdater.setFeedURL({
     url: updateFeed,
     serverType: 'json'

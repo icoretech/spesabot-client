@@ -61,7 +61,7 @@ const config = {
     config: {
       host: 'https://nucleus.icorete.ch',
       appId: '1',
-      channelId: '0b1fdcf9e30320cf383f8b1e7f488969',
+      channelId: 'b566e902588c0222b74b256b67b0d304',
       token: process.env.NUCLEUS_TOKEN
     }
   }],

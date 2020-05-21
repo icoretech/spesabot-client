@@ -7,6 +7,7 @@ const Path = require('path');
 const puppeteer = require('puppeteer-extra');
 const AdblockerPlugin = require('puppeteer-extra-plugin-adblocker')
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
+const RecaptchaPlugin = require('puppeteer-extra-plugin-recaptcha');
 // const chromium = require('chromium');
 
 // const AirBrake = require('./airbrake');

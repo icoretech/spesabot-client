@@ -8,10 +8,10 @@ function myRequire(url, name) {
 
   Log.log(`loading external module ${name}`);
 
-  if ( MODULES[name] ) {
-    // Log.info(`Remote file code already loaded: ${name}`);
-    return Promise.resolve( MODULES[name] );
-  }
+  // if ( MODULES[name] ) {
+  //   // Log.info(`Remote file code already loaded: ${name}`);
+  //   return Promise.resolve( MODULES[name] );
+  // }
 
   Log.log(`loading module from remote url`);
 

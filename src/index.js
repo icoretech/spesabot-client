@@ -170,16 +170,6 @@ function callNotification() {
 // code. You can also put them in separate files and import them here.
 const main = async() => {
 
-  ipcMain.on('close-paypal', () => {
-    BrowserWindow.getAllWindows().forEach((win) => {
-      // The Paypal window would fail to load contents due to security
-      // restrictions and return an empty URL
-      if (!win.webContents.getURL()) {
-        win.close();
-      }
-    });
-  });
-
   ipcMain.on('loggedin', (event, obj) => {
     if (obj.start) {
       // Log.log(`new page navigated`);

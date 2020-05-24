@@ -2,6 +2,7 @@ const Path = require('path');
 const FS = require('fs');
 const ElectronLog = require('node-log-rotate');
 const Package = require('../package.json');
+const OS = require('os');
 
 
 ElectronLog.setup({
@@ -13,7 +14,7 @@ ElectronLog.setup({
 ElectronLog.deleteLog(2);
 
 
-const TEMP_FOLDER = process.env.TMPDIR; // Path.join(process.env.TMPDIR, '.spesabot');
+const TEMP_FOLDER = OS.tmpdir(); // Path.join(process.env.TMPDIR, '.spesabot');
 console.log('temp folder is', TEMP_FOLDER);
 // if ( ! FS.existsSync( TEMP_FOLDER ) ) {
 //   console.log(`creating folder ${TEMP_FOLDER}`);

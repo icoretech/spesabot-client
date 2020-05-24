@@ -12,12 +12,20 @@ Menu.setApplicationMenu(null);
 
 const path = require('path');
 const isDev = require('electron-is-dev');
-const {Log, Name, TempFolder} = require('./utils');
+const {
+  Log,
+  Name,
+  TempFolder
+} = require('./utils');
 
 Log.log('Starting up');
-Log.log(`folder is: ${TempFolder}` );
+Log.log(`folder is: ${TempFolder}`);
 
-const {connect, disconnect, isConnected} = require('./messenger');
+const {
+  connect,
+  disconnect,
+  isConnected
+} = require('./messenger');
 
 // https://www.electronjs.org/docs/tutorial/updates
 // On OSX the production build must be code signed. We skip this in dev.
@@ -56,7 +64,6 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
   app.quit();
 }
 
-
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -80,7 +87,7 @@ const createWindow = () => {
   //     userAgent: 'spesabot'
   //   })
   // file:///Users/kain/Downloads/metronic_v6.1.8/theme/default/demo12/dist/custom/apps/projects/edit-project.html
-    // mainWindow.loadFile('/Users/kain/Downloads/metronic_v6.1.8/theme/default/demo12/dist/custom/apps/projects/edit-project.html');
+  // mainWindow.loadFile('/Users/kain/Downloads/metronic_v6.1.8/theme/default/demo12/dist/custom/apps/projects/edit-project.html');
 
   mainWindow.setMenu(null);
 
@@ -161,16 +168,25 @@ function callNotification() {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
-const main = async () => {
+const main = async() => {
+
+  ipcMain.on('close-paypal', () => {
+    BrowserWindow.getAllWindows().forEach((win) => {
+      // The Paypal window would fail to load contents due to security
+      // restrictions and return an empty URL
+      if (!win.webContents.getURL()) {
+        win.close();
+      }
+    });
+  });
 
   ipcMain.on('loggedin', (event, obj) => {
-    if ( obj.start ) {
+    if (obj.start) {
       // Log.log(`new page navigated`);
-      if ( !isConnected()  ) {
+      if (!isConnected()) {
         Log.log(`connecting socket`);
-        connect( obj.url );
-      } else {
-      }
+        connect(obj.url);
+      } else {}
     } else {
       Log.log(`disconnecting socket`);
       disconnect();

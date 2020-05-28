@@ -134,7 +134,7 @@ class Task {
     }, (err, httpResponse, body) => {
       this.Log('remove screenshot file');
       try {
-        // FS.unlinkSync(filePath)
+        FS.unlinkSync(filePath)
       } catch(e) {
         this.Log(`error while removing file: ${filePath}`);
       }

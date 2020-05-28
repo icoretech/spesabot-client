@@ -57,7 +57,7 @@ class BotClusterClass extends EventEmitter {
   async startCluster() {
     Cluster.launch({
       concurrency: Cluster.CONCURRENCY_CONTEXT,
-      maxConcurrency: process.env.CONCURRENCY || 2,
+      maxConcurrency: process.env.CONCURRENCY || 10,
       puppeteer: puppeteer,
       puppeteerOptions: puppeteerArgs,
       monitor: false,

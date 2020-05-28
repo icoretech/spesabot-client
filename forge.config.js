@@ -17,8 +17,8 @@ const config = {
     name: 'SpesaBot',
     executableName: 'spesabot',
     asar: {
-      // unpack: "node_modules/puppeteer/.local-chromium/**/*"
-      unpack: "**/node_modules/puppeteer/**/*"
+      unpack: "**/node_modules/puppeteer/.local-chromium/**/*"
+      // unpack: "**/node_modules/puppeteer/**/*"
     },
     // asar: false,
     icon: path.resolve(__dirname, 'assets', 'icons', 'spesabot'),

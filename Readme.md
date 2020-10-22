@@ -1,9 +1,5 @@
 # iCoreTech SpesaBot Desktop
 
-[![Build Status](https://drone.icorete.ch/api/badges/icoretech/nucleus/status.svg)](https://drone.icorete.ch/icoretech/nucleus)
-
-[Nucleus](https://bitbucket.org/icoretech/nucleus/src) is an electron based desktop application.
-
 ## Commands
 
 This repo uses https://www.electronforge.io to build and publish releases.
@@ -21,10 +17,10 @@ npm run start
 https://github.com/electron/fiddle/blob/master/forge.config.js
 https://github.com/dirkschumacher/r-shiny-electron/issues/25
 
+```
 brew cask install xquartz
 brew cask install wine-stable
 
-```
 npm run make
 ```
 
@@ -38,9 +34,8 @@ https://github.com/joeireland/electron-circleci/blob/master/.circleci/config.yml
 ```
 brew cask install xquartz
 brew cask install wine-stable
-https://www.mono-project.com/download/stable/
+# https://www.mono-project.com/download/stable/
 
-```
 electron-forge make --platform=win32
 ```
 
@@ -54,5 +49,4 @@ This command will build and publish packages on https://nucleus.icorete.ch
 
 ## Copyright
 
-Copyright (c) 2020 iCoreTech, Inc.
-# spesabot-desktop
+Copyright (c) 2020-2021 iCoreTech, Inc.

@@ -45,8 +45,6 @@ electron-forge make --platform=win32
 npm run publish
 ```
 
-This command will build and publish packages on https://nucleus.icorete.ch
-
 ## Copyright
 
 Copyright (c) 2020-2021 iCoreTech, Inc.

@@ -3,7 +3,7 @@ node_js: "12"
 os:
 - linux
 - osx
-dist: focal
+dist: bionic
 osx_image: xcode12
 
 cache:

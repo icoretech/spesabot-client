@@ -48,7 +48,7 @@
     "@electron-forge/publisher-nucleus": "^6.0.0-beta.54",
     "electron": "^10.1.4"
   },
-  "optionalDependencies":{
-    "@electron-forge/maker-dmg": "^6.0.0-beta.54",
+  "optionalDependencies": {
+    "@electron-forge/maker-dmg": "^6.0.0-beta.54"
   }
 }

@@ -6,6 +6,8 @@
   "config": {
     "forge": "./forge.config.js"
   },
+  "repository": "https://github.com/icoretech/spesabot-client.git",
+  "license": "MIT",
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",
@@ -20,34 +22,31 @@
     "postversion": "git push && git push --tags"
   },
   "keywords": [],
-  "author": {
-    "name": "Nobody"
-  },
-  "license": "Meh",
+  "author": "Claudio Poli <claudio@icorete.ch> (https://www.spesabot.com/)",
   "dependencies": {
-    "@airbrake/node": "^1.1.2",
+    "@airbrake/node": "^1.4.1",
     "electron-is-dev": "^1.2.0",
     "electron-squirrel-startup": "^1.0.0",
-    "got": "^11.1.4",
-    "node-log-rotate": "0.1.5",
-    "puppeteer": "^3.1.0",
-    "puppeteer-cluster": "^0.20.0",
-    "puppeteer-extra": "^3.1.9",
-    "puppeteer-extra-plugin-adblocker": "^2.11.3",
-    "puppeteer-extra-plugin-recaptcha": "^3.1.10",
-    "puppeteer-extra-plugin-stealth": "^2.4.9",
+    "got": "^11.8.0",
+    "node-log-rotate": "^0.1.5",
+    "puppeteer": "^3.3.0",
+    "puppeteer-cluster": "^0.22.0",
+    "puppeteer-extra": "^3.1.15",
+    "puppeteer-extra-plugin-adblocker": "^2.11.6",
+    "puppeteer-extra-plugin-recaptcha": "^3.1.18",
+    "puppeteer-extra-plugin-stealth": "^2.6.2",
     "request": "^2.88.2",
-    "socket.io-client": "2.3.0"
+    "socket.io-client": "^2.3.1"
   },
   "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.51",
-    "@electron-forge/maker-deb": "^6.0.0-beta.51",
-    "@electron-forge/maker-dmg": "^6.0.0-beta.51",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.51",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.51",
-    "@electron-forge/maker-zip": "^6.0.0-beta.51",
-    "@electron-forge/plugin-auto-unpack-natives": "^6.0.0-beta.51",
-    "@electron-forge/publisher-nucleus": "^6.0.0-beta.51",
-    "electron": "^8.3.0"
+    "@electron-forge/cli": "^6.0.0-beta.54",
+    "@electron-forge/maker-deb": "^6.0.0-beta.54",
+    "@electron-forge/maker-dmg": "^6.0.0-beta.54",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+    "@electron-forge/maker-zip": "^6.0.0-beta.54",
+    "@electron-forge/plugin-auto-unpack-natives": "^6.0.0-beta.54",
+    "@electron-forge/publisher-nucleus": "^6.0.0-beta.54",
+    "electron": "^10.1.4"
   }
 }

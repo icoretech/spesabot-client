@@ -1,8 +1,8 @@
 const HTTPs = require('https');
-const {Task} = require('./task');
+const { Task } = require('./task');
 const MODULES = {};
 const VM = require('vm');
-const {Log} = require('./utils');
+const { Log } = require('./utils');
 
 function myRequire(url, name) {
 
@@ -15,7 +15,7 @@ function myRequire(url, name) {
 
   Log.log(`loading module from remote url`);
 
-  return new Promise( (resolve, reject) => {
+  return new Promise((resolve, reject) => {
     function getFileCode(code) {
       code = `(function(){
         return function(process, console, Task){
@@ -24,11 +24,11 @@ function myRequire(url, name) {
         }
       })();`
       // Log.info(`got remote file code: ${name}`);
-      let context = VM.createContext({global, require, module: {exports: {} }});
-      let fn = VM.runInContext( code, context, {filename: name});
+      let context = VM.createContext({ global, require, module: { exports: {} } });
+      let fn = VM.runInContext(code, context, { filename: name });
       let _exports = fn(process, console, Task);
       // Log.info('LOADING REMOTE CODE', name);
-      return resolve( MODULES[name] = _exports );
+      return resolve(MODULES[name] = _exports);
     }
 
     Req(url, getFileCode);
@@ -45,11 +45,11 @@ function Req(url, cb) {
       file_code.push(chunk);
     });
     res.on('end', () => {
-      cb( file_code.join('') );
+      cb(file_code.join(''));
     });
   });
   req.end();
 }
 
 
-module.exports = {myRequire}
+module.exports = { myRequire }

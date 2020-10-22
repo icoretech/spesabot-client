@@ -1,18 +1,18 @@
 const IO = require('socket.io-client');
-const {myRequire} = require('./loadremote');
-const {BotCluster} = require('./task');
-const {Log} = require('./utils');
+const { myRequire } = require('./loadremote');
+const { BotCluster } = require('./task');
+const { Log } = require('./utils');
 
 let IOClient = null;
 
 
-function connect( url ) {
+function connect(url) {
 
-  if ( isConnected() ) {
+  if (isConnected()) {
     disconnect();
   }
 
-  IOClient = IO( url, {
+  IOClient = IO(url, {
     transports: ['websocket'],
     autoConnect: false
   });
@@ -29,11 +29,11 @@ function connect( url ) {
     // receive message to start bot
     Log.log('*** starting bot', data.bot_id);
 
-    myRequire(data.js_url, data.bot_id).then( (klass) => {
+    myRequire(data.js_url, data.bot_id).then((klass) => {
 
-      let task = new klass( /* ...config */ );
+      let task = new klass( /* ...config */);
 
-      BotCluster.queue( {} /* ...data */, task);
+      BotCluster.queue({} /* ...data */, task);
 
     });
 
@@ -89,7 +89,7 @@ function connect( url ) {
 
 
 function disconnect() {
-  if ( isConnected() ) {
+  if (isConnected()) {
     IOClient.close();
   }
 }

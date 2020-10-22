@@ -1,5 +1,5 @@
 const EventEmitter = require('events').EventEmitter;
-const {Log, TempFolder} = require('./utils');
+const { Log, TempFolder } = require('./utils');
 const Request = require('request');
 const FS = require('fs');
 const Path = require('path');
@@ -12,7 +12,7 @@ const RecaptchaPlugin = require('puppeteer-extra-plugin-recaptcha');
 
 // const AirBrake = require('./airbrake');
 
-puppeteer.use(AdblockerPlugin({blockTrackers: true}));
+puppeteer.use(AdblockerPlugin({ blockTrackers: true }));
 puppeteer.use(StealthPlugin());
 
 const {
@@ -47,10 +47,10 @@ class BotClusterClass extends EventEmitter {
   }
 
   queue(userdata, task) {
-    if ( this.clusterReady ) {
-      this.__cluster.queue(userdata, task.execute.bind(task) );
+    if (this.clusterReady) {
+      this.__cluster.queue(userdata, task.execute.bind(task));
     } else {
-      this.__task_queue.push({userdata, task});
+      this.__task_queue.push({ userdata, task });
     }
   }
 
@@ -62,7 +62,7 @@ class BotClusterClass extends EventEmitter {
       puppeteerOptions: puppeteerArgs,
       monitor: false,
       timeout: 130000
-    }).then( (clust) => {
+    }).then((clust) => {
       this.__cluster = clust;
       this.clusterReady = true;
       this.startTasks();
@@ -72,7 +72,7 @@ class BotClusterClass extends EventEmitter {
   startTasks() {
     // double check (just to be sure)
     this.clusterReady = true;
-    while( this.__task_queue.length > 0 ) {
+    while (this.__task_queue.length > 0) {
       let obj = this.__task_queue.shift();
       this.queue(obj.userdata, obj.task);
     }
@@ -84,7 +84,7 @@ let BotCluster = new BotClusterClass();
 
 
 class Task {
-  constructor(config){
+  constructor(config) {
     this.config = config;
     this.botcluster = BotCluster;
     Log.log(`new task has been loaded`);
@@ -104,13 +104,13 @@ class Task {
   }
 
   computePath(parentPath, path) {
-    return Path.join( parentPath, path);
+    return Path.join(parentPath, path);
   }
 
   createDir(path) {
     try {
-      FS.mkdirSync(path, { recursive: true } );
-    } catch( e ) {
+      FS.mkdirSync(path, { recursive: true });
+    } catch (e) {
       this.Log(`error ${e}`);
     }
   }
@@ -135,7 +135,7 @@ class Task {
       this.Log('remove screenshot file');
       try {
         FS.unlinkSync(filePath)
-      } catch(e) {
+      } catch (e) {
         this.Log(`error while removing file: ${filePath}`);
       }
 
@@ -152,4 +152,4 @@ class Task {
 }
 
 
-module.exports = {BotCluster, Task};
+module.exports = { BotCluster, Task };

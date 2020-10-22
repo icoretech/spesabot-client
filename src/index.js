@@ -49,6 +49,7 @@ try {
   Log.log(err);
   Log.log('Skipping codesign and autoupdate');
   console.error(err);
+  console.error('Skipping codesign and autoupdate');
 }
 
 if (isDev) {
@@ -86,11 +87,11 @@ const createWindow = () => {
 
   mainWindow.loadURL(
     isDev ?
-    'https://app-dev.spesabot.com/users/sign_in' :
-    'https://app.spesabot.com/users/sign_in'
+      'https://app-dev.spesabot.com/users/sign_in' :
+      'https://app.spesabot.com/users/sign_in'
   );
 
-  mainWindow.webContents.on('new-window', function(e, url) {
+  mainWindow.webContents.on('new-window', function (e, url) {
     e.preventDefault();
     require('electron').shell.openExternal(url);
   });
@@ -157,7 +158,7 @@ function callNotification() {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
-const main = async() => {
+const main = async () => {
 
   ipcMain.on('loggedin', (event, obj) => {
     if (obj.start) {
@@ -165,7 +166,7 @@ const main = async() => {
       if (!isConnected()) {
         Log.log(`connecting socket`);
         connect(obj.url);
-      } else {}
+      } else { }
     } else {
       Log.log(`disconnecting socket`);
       disconnect();

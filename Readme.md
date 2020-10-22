@@ -1,5 +1,8 @@
 # iCoreTech SpesaBot Desktop
 
+
+[![Build Status](https://travis-ci.com/icoretech/spesabot-client.svg?branch=master&status=created)](https://travis-ci.com/icoretech/spesabot-client)
+
 ## Commands
 
 This repo uses https://www.electronforge.io to build and publish releases.

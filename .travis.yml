@@ -7,7 +7,7 @@ dist: bionic
 osx_image: xcode12
 
 cache:
-  npm: false
+  npm: true
   directories:
   - $HOME/.cache/electron
 

@@ -41,12 +41,14 @@
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.54",
     "@electron-forge/maker-deb": "^6.0.0-beta.54",
-    "@electron-forge/maker-dmg": "^6.0.0-beta.54",
     "@electron-forge/maker-rpm": "^6.0.0-beta.54",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
     "@electron-forge/maker-zip": "^6.0.0-beta.54",
     "@electron-forge/plugin-auto-unpack-natives": "^6.0.0-beta.54",
     "@electron-forge/publisher-nucleus": "^6.0.0-beta.54",
     "electron": "^10.1.4"
+  },
+  "optionalDependencies":{
+    "@electron-forge/maker-dmg": "^6.0.0-beta.54",
   }
 }

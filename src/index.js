@@ -78,17 +78,6 @@ const createWindow = () => {
     }
   });
 
-  // and load the index.html of the app.
-  // mainWindow.loadFile(path.join(__dirname, 'index.html'));
-  // mainWindow.loadURL('https://keenthemes.com/metronic/preview/demo8/custom/apps/projects/list-datatable.html')
-  // mainWindow.loadURL('https://keenthemes.com/metronic/preview/demo4/custom/apps/projects/list-datatable.html');
-  // mainWindow.loadFile('/Users/kain/Downloads/metronic_v6.1.8/theme/default/demo12/dist/custom/apps/contacts/list-datatable.html');
-  // mainWindow.loadURL(process.env.SPESABOT_URL || 'https://app-dev.spesabot.com', {
-  //     userAgent: 'spesabot'
-  //   })
-  // file:///Users/kain/Downloads/metronic_v6.1.8/theme/default/demo12/dist/custom/apps/projects/edit-project.html
-  // mainWindow.loadFile('/Users/kain/Downloads/metronic_v6.1.8/theme/default/demo12/dist/custom/apps/projects/edit-project.html');
-
   mainWindow.setMenu(null);
 
   mainWindow.once('ready-to-show', () => {
@@ -184,16 +173,5 @@ const main = async() => {
 
     event.returnValue = 'ok';
   });
-
-  // await pie.initialize(app);
-  // const browser = await pie.connect(app, puppeteer);
-
-  // const window = new BrowserWindow();
-  // const url = "https://echo.icorete.ch";
-  // await window.loadURL(url);
-
-  // const page = await pie.getPage(browser, window);
-  // console.log(page.url());
-  // window.destroy();
 };
 main();

@@ -46,6 +46,6 @@
     "@electron-forge/maker-zip": "^6.0.0-beta.54",
     "@electron-forge/plugin-auto-unpack-natives": "^6.0.0-beta.54",
     "@electron-forge/publisher-nucleus": "^6.0.0-beta.54",
-    "electron": "^10.1.4"
+    "electron": "^11.5.0"
   }
 }

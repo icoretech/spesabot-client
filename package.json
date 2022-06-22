@@ -27,7 +27,7 @@
     "@airbrake/node": "^1.4.1",
     "electron-is-dev": "^1.2.0",
     "electron-squirrel-startup": "^1.0.0",
-    "got": "^11.8.0",
+    "got": "^11.8.5",
     "node-log-rotate": "^0.1.5",
     "puppeteer": "^3.3.0",
     "puppeteer-cluster": "^0.22.0",
